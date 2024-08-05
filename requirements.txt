@@ -1,0 +1,8 @@
+pdfplumber~=0.11.2
+spacy~=3.7.5
+uvicorn~=0.30.5
+fastapi~=0.112.0
+transformers~=4.43.3
+fuzzywuzzy~=0.18.0
+yake~=0.4.8
+fitz
