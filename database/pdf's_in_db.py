@@ -1,9 +1,15 @@
 import os
 import sqlite3
 
-
-# Step 2: Create SQLite Database and Table
 def create_database():
+    """
+    Create an SQLite database and a table for storing PDF files.
+
+    The table is named 'pdfs' and has the following columns:
+    - id: An integer primary key that autoincrements.
+    - file_name: The name of the PDF file.
+    - file_data: The binary data of the PDF file.
+    """
     conn = sqlite3.connect('pdf_files.db')
     cursor = conn.cursor()
     cursor.execute('''
@@ -17,8 +23,12 @@ def create_database():
     conn.close()
 
 
-# Step 3: Function to Insert PDF into Database
 def insert_pdf(file_path):
+    """
+    Insert a PDF file into the SQLite database.
+
+    :param file_path: The path to the PDF file.
+    """
     with open(file_path, 'rb') as file:
         file_data = file.read()
     conn = sqlite3.connect('pdf_files.db')
@@ -31,8 +41,12 @@ def insert_pdf(file_path):
     conn.close()
 
 
-# Step 4: Insert All PDFs from the Directory
 def insert_pdfs_from_directory(pdf_directory):
+    """
+    Insert all PDF files from the specified directory into the SQLite database.
+
+    :param pdf_directory: The path to the directory containing PDF files.
+    """
     if not os.path.exists(pdf_directory):
         print(f"Directory does not exist: {pdf_directory}")
         return
