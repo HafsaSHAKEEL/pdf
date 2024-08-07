@@ -1,7 +1,8 @@
 import os
-import fitz  # PyMuPDF
+import fitz
 from fastapi import HTTPException
 from fastapi.responses import Response
+
 
 def list_all_pdfs():
     """
@@ -14,7 +15,7 @@ def list_all_pdfs():
     if not os.path.exists(pdf_dir):
         raise HTTPException(status_code=404, detail="PDF directory not found")
 
-    pdf_files = [f for f in os.listdir(pdf_dir) if f.endswith('.pdf')]
+    pdf_files = [f for f in os.listdir(pdf_dir) if f.endswith(".pdf")]
     return pdf_files
 
 

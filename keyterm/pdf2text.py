@@ -1,6 +1,6 @@
 import os
 import logging
-import fitz  # PyMuPDF
+import fitz
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -11,7 +11,7 @@ def extract_text_from_pdf(pdf_directory, text_directory):
     """
     Extract text from PDF files in the specified directory and save the extracted text to text files.
 
-    This function processes all PDF files in the provided directory, extracts the text content from each page,
+    This function processes all PDaF files in the provided directory, extracts the text content from each page,
     and saves the extracted text to a corresponding text file in the specified text directory.
 
     :param pdf_directory: Path to the directory containing PDF files.
@@ -27,7 +27,9 @@ def extract_text_from_pdf(pdf_directory, text_directory):
     for filename in os.listdir(pdf_directory):
         if filename.endswith(".pdf"):
             pdf_path = os.path.join(pdf_directory, filename)
-            text_path = os.path.join(text_directory, filename.replace(".pdf", "_text.txt"))
+            text_path = os.path.join(
+                text_directory, filename.replace(".pdf", "_text.txt")
+            )
 
             try:
                 logging.info(f"Extracting text from {pdf_path}")
