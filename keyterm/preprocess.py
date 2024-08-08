@@ -12,7 +12,7 @@ nltk.download("punk")
 nltk.download("averaged_perceptron_tagger")
 
 logging.basicConfig(
-    level=logging.INFO, format="%(pastime)s - %(levelname)s - %(message)s"
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
 
@@ -250,7 +250,7 @@ class TermExtractionHandler:
                     print(term)
 
 
-if __name__ == "__main__":
+if __name__ == "__app__":
     pdf_directory = "../pdf"
     handler = TermExtractionHandler()
     handler.process_pdfs(pdf_directory)

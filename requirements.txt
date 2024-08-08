@@ -6,3 +6,4 @@ transformers~=4.43.3
 fuzzywuzzy~=0.18.0
 yake~=0.4.8
 fitz
+pydantic

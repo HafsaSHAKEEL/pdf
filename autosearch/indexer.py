@@ -117,7 +117,8 @@ class Indexer:
 
         return sorted(results, key=lambda x: x["match_percentage"], reverse=True)
 
-    def get_context_matches(self, filename, query_terms):
+    def get_context_matches(self, filename, query_terms):  # highlight terms that are being found,Handle Tap/Click to
+        # Jump to Sections:
         """
         Get context matches for query terms in a specific document.
 
@@ -140,7 +141,10 @@ class Indexer:
                 start_idx = max(i - 2, 0)
                 end_idx = min(i + 3, len(lines))
                 snippet = ' '.join(lines[start_idx:end_idx])
-                matches.append({"context": snippet})
+                highlighted_snippet = snippet
+                for term in query_terms:
+                    highlighted_snippet = highlighted_snippet.replace(term, f"<mark>{term}</mark>")
+                matches.append({"context": highlighted_snippet})
 
         return matches
 
@@ -203,7 +207,7 @@ class Indexer:
         return sorted(results, key=lambda x: x["match_percentage"], reverse=True)
 
 
-if __name__ == "__main__":
+if __name__ == "__app__":
     pdf_directory = "/mnt/data"
     indexer = Indexer(pdf_directory)
     logging.info("Indexing complete.")
